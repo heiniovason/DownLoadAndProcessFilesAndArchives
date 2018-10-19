@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DownLoadAndProcessFilesAndArchives
 {
@@ -36,6 +33,29 @@ namespace DownLoadAndProcessFilesAndArchives
             {
                 Console.WriteLine("WARNING: insufficient URL string array length.");
             }
+        }
+
+        public static void ProcessDownloadedFiles(string localStoragePath)
+        {
+            string[] fileEntries = Directory.GetFiles(localStoragePath);
+
+            foreach (string fileName in fileEntries)
+
+                if (fileName.Substring(fileName.LastIndexOf('.') + 1) == "txt")
+                {
+                    Console.WriteLine("File type .txt detected.");
+                    // TODO: ProcessFile
+                }
+                else if (fileName.Substring(fileName.LastIndexOf('.') + 1) == "zip")
+                {
+                    Console.WriteLine("File type .zip detected.");
+                    // TODO: UnzipArchive(zip)
+                    // ProcessFile from zip
+                }
+                else
+                {
+                    // Not shure yet.
+                }
         }
     }
 }
